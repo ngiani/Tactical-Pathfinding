@@ -38,7 +38,7 @@ class Tank : public Agent, public GameObject {
 			speed = s;
 			health = MAX_HEALTH;
 
-			healthBar = *SDL_LoadBMP("C:/Users/Nos/Documents/Visual Studio 2015/Projects/AiDemo/Textures/healthBar.bmp");
+			healthBar = *SDL_LoadBMP("../Textures/healthBar.bmp");
 
 			healthBarTexture = SDL_CreateTextureFromSurface(renderer, &healthBar);
 		}
@@ -212,7 +212,7 @@ class AntiTank : public GameObject {
 
 		AntiTank(const char* texturePath, SDL_Renderer* renderer, int posX, int posY, int w, int h) : GameObject(texturePath, renderer, posX, posY, w, h) {
 		
-			missile = GameObject("C:/Users/Nos/Documents/Visual Studio 2015/Projects/AiDemo/Textures/missileLeft.bmp", renderer, posX, posY, 20, 10);
+			missile = GameObject("../Textures/missileLeft.bmp", renderer, posX, posY, 20, 10);
 
 			/*missileDir = Direction::NONE;
 
@@ -297,7 +297,7 @@ class AntiTank : public GameObject {
 			if (explosionCounter > 0) {
 
 				//Show explosion
-				SDL_Surface explosionSprite = *SDL_LoadBMP("C:/Users/Nos/Documents/Visual Studio 2015/Projects/AiDemo/Textures/explosion.bmp");
+				SDL_Surface explosionSprite = *SDL_LoadBMP("../Textures/explosion.bmp");
 
 				SDL_Texture* texture;
 
@@ -384,7 +384,7 @@ int main(int argc, char* argv[]) {
 
 	//Create tank
 
-	Tank tank(&map, "C:/Users/Nos/Documents/Visual Studio 2015/Projects/AIDemo/Textures/tank.bmp", renderer, Vector2D(700, 200), 10, 200, 143, 94, 0.25f);
+	Tank tank(&map, "../Textures/tank.bmp", renderer, Vector2D(700, 200), 10, 200, 143, 94, 0.25f);
 
 	
 
@@ -406,7 +406,7 @@ int main(int argc, char* argv[]) {
 				if (SDL_GetMouseState(&x, &y) & SDL_BUTTON(SDL_BUTTON_LEFT) && enemies.size() < MAX_ENEMIES) {
 
 					//Create anti-tank soldier on clicked position
-					AntiTank antiTank("C:/Users/Nos/Documents/Visual Studio 2015/Projects/AiDemo/Textures/soldierleft.bmp", renderer, x, y, 30, 25);
+					AntiTank antiTank("../Textures/soldierleft.bmp", renderer, x, y, 30, 25);
 					antiTank.setMaxDamage(10.0f);
 
 					//Spread influence from anti-tank soldier position

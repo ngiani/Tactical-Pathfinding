@@ -3,8 +3,9 @@
 #include <iostream>
 #define MAX_INFLUENCE 20
 #define DISTANCE_THRESHOLD 50.0f
-int influenceWeight;
-int heuristicWeight;
+
+const int influenceWeight;
+const int heuristicWeight;
 
 Agent::Agent(Vector2D target) : target(target){
 

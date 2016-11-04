@@ -48,20 +48,14 @@ GameObject::GameObject(const char* texturePath, SDL_Renderer* renderer, int posX
 }
 
 
-GameObject::~GameObject()
-{
-	//SDL_FreeSurface(sprite);
-}
+GameObject::~GameObject(){}
 
 void GameObject::Render(SDL_Surface * screen, SDL_Renderer * renderer, double angle)
 {
 
 	screenArea = { (int)pos.x, (int)pos.y, width, height };
-
 	bitmapArea = { 0,0,width,height };
-
 	collider.center = Vector2D(pos.x + width / 2, pos.y + height/ 2);
-
 	pivot = {0 + width / 2, 0 + height / 2 };
 
 	if (SDL_RenderCopyEx(renderer, texture, &bitmapArea, &screenArea, angle, &pivot, SDL_FLIP_NONE) != 0) {

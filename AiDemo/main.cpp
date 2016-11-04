@@ -195,6 +195,7 @@ class Tank : public Agent, public GameObject {
 		Map* map;
 		float health;
 		float speed;
+
 		SDL_Surface healthBar;
 		SDL_Texture* healthBarTexture;
 
@@ -245,6 +246,7 @@ class AntiTank : public GameObject {
 				int deltaTime = Time();
 				Vector2D velocity = Vector2D((tank->getCollider().center.x - collider.center.x) / 100, (tank->getCollider().center.y - collider.center.y) / 100) * deltaTime * speed;
 				missile.setPos(missile.getPos() + velocity);
+				missile.Render(screen, renderer, atan2(collider.center.y - tank->getCollider().center.y, collider.center.x - tank->getCollider().center.x) * 180 * M_PI * 0.1);
 				
 			}
 
@@ -262,8 +264,6 @@ class AntiTank : public GameObject {
 				launchCounter = LAUNCH_COUNTER;
 				missileArmed = true;
 			}
-
-			missile.Render(screen, renderer, atan2(collider.center.y - tank->getCollider().center.y, collider.center.x - tank->getCollider().center.x) * 180 * M_PI * 0.1);
 
 			launchCounter--;
 
@@ -289,7 +289,7 @@ class AntiTank : public GameObject {
 
 				missileArmed = false;
 
-				explosionCounter = 10;
+				explosionCounter = 75;
 
 			}
 
@@ -384,7 +384,7 @@ int main(int argc, char* argv[]) {
 
 	//Create tank
 
-	Tank tank(&map, "../Textures/tank.bmp", renderer, Vector2D(700, 200), 10, 200, 143, 94, 0.25f);
+	Tank tank(&map, "../Textures/tank.bmp", renderer, Vector2D(700, 240), 10, 200, 143, 94, 0.25f);
 
 	
 
@@ -433,19 +433,7 @@ int main(int argc, char* argv[]) {
 			//Update tank state
 			tank.UpdateState(renderer);
 
-			if (tank.getVelocity().x > 0 && tank.getVelocity().x > tank.getVelocity().y) {
-				tank.Render(screen, renderer, 0);
-			}
-			else if (tank.getVelocity().y > 0 && tank.getVelocity().y > tank.getVelocity().x) {
-				tank.Render(screen, renderer, 90);
-			}
-			else if (tank.getVelocity().x < 0 && tank.getVelocity().x < tank.getVelocity().y) {
-				tank.Render(screen, renderer, 180);
-
-			}
-			else if (tank.getVelocity().y < 0 && tank.getVelocity().y < tank.getVelocity().x) {
-				tank.Render(screen, renderer, 270);
-			}
+			tank.Render(screen, renderer, atan2(tank.getVelocity().y, tank.getVelocity().x) * 180 * M_PI * 0.1);
 
 			//Show health bar
 			tank.showHealth(renderer);

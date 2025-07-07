@@ -1,12 +1,12 @@
-Tactical-Pathfinding 🧽
+**Tactical-Pathfinding** 🧽
 
 A C++ demo of tactical pathfinding using influence maps and A* algorithm, complete with a basic UI built with the SenselessGameFramework.
 
-📌 Overview
+##📌 Overview
 
 This project demonstrates a tactical pathfinding approach on a 2D grid. The agent selects routes by balancing physical distance and "influence" (e.g., dangerous or strategic zones), using a custom A* implementation.
 
-Key Features:
+##Key Features:
 
 A* implementation with dynamic edge weights.
 
@@ -16,7 +16,7 @@ Adjustable weighting: distance (heuristicWeight) and influence (influenceWeight)
 
 Basic graphical UI using SenselessGameFramework.
 
-🧱 Repository Structure
+##🧱 Repository Structure
 ```
 /
 ├── AiDemo/              # Visual Studio demo project
@@ -30,7 +30,7 @@ Basic graphical UI using SenselessGameFramework.
 │   └── … assets
 └── .gitignore
 ```
-🚀 Running the Demo
+##🚀 Running the Demo
 
 Clone the repository:
 
@@ -45,7 +45,7 @@ Run AiDemo.exe: the program will prompt for influenceWeight and heuristicWeight 
 
 Observe the agent navigating the grid, with a target selected via mouse input.
 
-⚙️ Algorithm Details
+##⚙️ Algorithm Details
 
 A*: the optimal path is computed as cost-so-far (g) + heuristic (h) × heuristicWeight.
 
@@ -55,8 +55,8 @@ Heuristic: Euclidean distance, normalized and scaled by heuristicWeight.
 
 This enables tactical behavior: the agent can prefer safer or faster routes depending on parameter values.
 
-📚 Dependencies
-
+##📚 Dependencies
+SDL library
 Visual Studio (2017 or newer) on Windows.
 
 (No CMake/NuGet dependencies required.)
